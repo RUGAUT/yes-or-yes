@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Tu veux être ma copine ? 💖</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #ffe6f0;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #ff3399;
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        button {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #yesBtn {
+            background-color: #66ff99;
+        }
+
+        #noBtn {
+            background-color: #ff6666;
+            position: absolute;
+        }
+
+        .response {
+            display: none;
+            font-size: 2em;
+            color: #cc0066;
+            margin-top: 50px;
+        }
+
+        #encouragement {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #ff3399;
+            min-height: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Tu veux être ma copine ? 🥺💘</h1>
+    <div class="button-container">
+        <button id="yesBtn">Oui ❤️</button>
+        <button id="noBtn">Non 💔</button>
+    </div>
+
+    <div id="encouragement"></div>
+    <div class="response" id="responseText">Youpiiii !!! 😍💖</div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const responseText = document.getElementById('responseText');
+        const encouragement = document.getElementById('encouragement');
+
+        const phrases = [
+            "Aller, dis oui 😘",
+            "T'es sûre ? 🥺",
+            "Allez, fais pas ta timide 😇",
+            "Je suis trop mignon pour un non 😔",
+            "Tu veux vraiment me briser le cœur ? 💔",
+            "Tu vas dire oui un jour 😁",
+            "Je t’aime déjà 😍",
+            "Ce ‘non’ n’est pas valide 😜",
+            "Tu sais que tu veux dire oui 💖",
+            "Tu me fais courir là 😂"
+        ];
+
+        let clickCount = 0;
+
+        noBtn.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+
+            encouragement.textContent = phrases[clickCount % phrases.length];
+            clickCount++;
+        });
+
+        yesBtn.addEventListener('click', () => {
+            responseText.style.display = 'block';
+            encouragement.textContent = '';
+        });
+    </script>
+
+</body>
+</html>
